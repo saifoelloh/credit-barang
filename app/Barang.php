@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Barang extends Model
 {
-    protected $primaryKey= 'kd_barang';
-    public $incrementinf = false;
+    public $incrementing = false;
+    protected $primaryKey = 'kode';
     protected $fillable = [
+        'kode',
         'nama',
         'harga',
         'jumlah',

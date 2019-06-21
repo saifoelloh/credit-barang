@@ -14,6 +14,21 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/admin/pelanggan', function () {
+    return view('layouts.pelanggan.index');
+});
+Route::get('/admin/pegawai', function () {
+    return view('layouts.pegawai.index');
+});
+Route::get('/admin/barang', function () {
+    return view('layouts.barang.index');
+});
+Route::get('/admin/pembelian', function () {
+    return view('layouts.pembelian.index');
+});
+Route::get('/admin/distributor', function () {
+    return view('layouts.distributor.index');
+});
 
 Auth::routes();
 
