@@ -108,36 +108,34 @@ return [
     */
 
     'menu' => [
+
+        'MENU',
         [
-            'text'        => 'Pelanggan',
-            'url'         => 'pelanggan',
-            'icon'        => 'users',
-            'label_color' => 'success',
+            'text' => 'Pelanggan',
+            'url'  => 'admin/pelanggan',
+            'icon' => 'users',
         ],
         [
-            'text'        => 'Pembelian',
-            'url'         => 'pembelian',
-            'icon'        => 'tag',
-            'label_color' => 'success',
+            'text' => 'Pembelian',
+            'url'  => 'admin/pembelian',
+            'icon' => 'shopping-cart',
         ],
         [
-            'text'        => 'Pegawai',
-            'url'         => 'pegawai',
-            'icon'        => 'user',
-            'label_color' => 'success',
+            'text' => 'Pegawai',
+            'url'  => 'admin/pegawai',
+            'icon' => 'user',
         ],
         [
-            'text'        => 'Barang',
-            'url'         => 'barang',
-            'icon'        => 'dropbox',
-            'label_color' => 'success',
+            'text' => 'Barang',
+            'url'  => 'admin/barang',
+            'icon' => 'dropbox',
         ],
         [
-            'text'        => 'Distributor',
-            'url'         => 'distributor',
-            'icon'        => 'flag',
-            'label_color' => 'success',
+            'text' => 'Distributor',
+            'url'  => 'admin/distributor',
+            'icon' => 'truck',
         ],
+        
     ],
 
     /*
