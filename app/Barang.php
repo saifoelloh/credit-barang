@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Barang extends Model
 {
+    protected $primaryKey= 'kd_barang';
+    public $incrementinf = false;
     protected $fillable = [
         'nama',
         'harga',
@@ -20,5 +22,10 @@ class Barang extends Model
     public function distributor()
     {
         return $this->belongsTo('App\Distributor');
+    }
+
+    public function pembelian()
+    {
+        return $this->belongsToMany('App\Pembelian');
     }
 }
