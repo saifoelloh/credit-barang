@@ -11,7 +11,7 @@
 <div class="col-md-8">
 <div class="box box-info">
 <div class="box-body">
-<table class="data-table">
+<table class="data-table table table-bordered table-hover">
     <thead>
         <tr>
             <th>Nama Pegawai</th>
@@ -19,6 +19,13 @@
             <th>Nomor Telepon</th>
         </tr>
     <thead>
+    <tbody>
+        <tr>
+            <td>Saipul Jamil</td>
+            <td>Tlogosari Permai</td>
+            <td>087888772973</td>
+        </tr>
+    </tbody>
 </table>
 </div>
 </div>
