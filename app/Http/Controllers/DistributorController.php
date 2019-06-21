@@ -83,13 +83,8 @@ class DistributorController extends Controller
 
     public function destroy($id)
     {
-        $findDistributor = Distributor::where('nama', $request->nama)->get();
-        if (sizeof($findDistributor)!=1) {
-            return abort(400);
-        }
-
         try {
-            $findDistributor->delete();
+            Distributor::destroy($id);
         } catch (\Throwable $th) {
             return abort(500, $th);
         }
