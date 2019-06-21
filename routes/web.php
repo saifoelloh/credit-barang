@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/pelanggan', function () {
+    return view('pelanggan.index');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
