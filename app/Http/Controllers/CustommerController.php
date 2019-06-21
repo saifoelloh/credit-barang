@@ -7,69 +7,80 @@ use Illuminate\Http\Request;
 
 class CustommerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        try {
+            $result = Custommer::All();
+        } catch (\Throwable $th) {
+            return abort(500, $th);
+        }
+
+        return view('custommer.index', [
+            'custommers' => $result
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $findCustommer = Custommer::where('email', $request->email)->get();
+        if (sizeof($findCustommer)!=0) {
+            return abort(400);
+        }
+
+        try {
+            $result = Custommer::create([
+                'nama' => $request->nama,
+                'alamat' => $request->alamat,
+                'no_telp' => $request->no_telp,
+            ]);
+        } catch (\Throwable $th) {
+            return abort(500, $th);
+        }
+
+        return redirect()->route('custommer');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Custommer  $custommer
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Custommer $custommer)
+    public function edit($id)
     {
-        //
+        try {
+            $result = Custommer::find($id);
+        } catch (\Throwable $th) {
+            return abort(500, $th);
+        }
+
+        if ($result==null) {
+            return abort(404);
+        }
+
+        return view('custommer.edit', [
+            'custommer' => $result
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Custommer  $custommer
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Custommer $custommer)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        $findCustommer = Custommer::where('email', $request->email)->get();
+        if (sizeof($findCustommer)!=1) {
+            return abort(400);
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Custommer  $custommer
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Custommer $custommer)
-    {
-        //
+        try {
+            $findCustommer->update([
+                'nama' => $request->nama,
+                'alamat' => $request->alamat,
+                'no_telp' => $request->no_telp,
+            ]);
+        } catch (\Throwable $th) {
+            return abort(500, $th);
+        }
+
+        return redirect()->route('custommer');
     }
 
     /**
@@ -78,8 +89,14 @@ class CustommerController extends Controller
      * @param  \App\Custommer  $custommer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Custommer $custommer)
+    public function destroy($id)
     {
-        //
+        try {
+            Custommer::delete($id);
+        } catch (\Throwable $th) {
+            return abort(500, $th);
+        }
+
+        return redirect()->route('custommer');
     }
 }
