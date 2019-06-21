@@ -16,4 +16,9 @@ class Custommer extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function pembelian()
+    {
+        return $this->belongsToMany('App\Pembelian');
+    }
 }

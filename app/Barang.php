@@ -24,4 +24,9 @@ class Barang extends Model
     {
         return $this->belongsTo('App\Distributor');
     }
+
+    public function pembelian()
+    {
+        return $this->belongsToMany('App\Pembelian');
+    }
 }
