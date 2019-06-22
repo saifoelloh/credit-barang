@@ -1,12 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    Hello
-</body>
-</html>
+@extends('adminlte::page')
+
+@section('title', 'AdminLTE')
+
+@section('content_header')
+    <h1>Pegawai</h1>
+@stop
+
+@section('content')
+<div class="row">
+<div class="col-md-8">
+<div class="box box-info">
+<div class="box-body">
+<table class="data-table table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Nama Pegawai</th>
+            <th>Alamat</th>
+            <th>Nomor Telepon</th>
+        </tr>
+    <thead>
+    <tbody>
+        <tr>
+            <td>Saipul Jamil</td>
+            <td>Tlogosari Permai</td>
+            <td>087888772973</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+@stop
+
+@section('js')
+    <script>
+        $(document).ready(function () {
+            $('.data-table').dataTable();
+        });
+    </script>
+@stop
