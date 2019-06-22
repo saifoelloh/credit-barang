@@ -32,15 +32,6 @@ Route::group([
         Route::delete('/{id}', 'CustommerController@destroy')->name('.destroy');
     });
 });
-// Route::get('/admin/pelanggan', function () {
-//     return view('layouts.pelanggan.index');
-// });
-// Route::get('/admin/pelanggan/add', function () {
-//     return view('layouts.pelanggan.tambah');
-// });
-// Route::get('/admin/pelanggan/edit', function () {
-//     return view('layouts.pelanggan.edit');
-// });
 
 /* Pegawai */
 Route::get('/admin/pegawai', function () {
