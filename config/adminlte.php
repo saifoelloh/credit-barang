@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 2',
+    'title' => 'Credit Barang',
 
     'title_prefix' => '',
 
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Credit </b>Barang',
 
-    'logo_mini' => '<b>A</b>LT',
+    'logo_mini' => '<b>C</b>B',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'blue',
+    'skin' => 'purple',
 
     /*
     |--------------------------------------------------------------------------
@@ -135,7 +135,7 @@ return [
             'url'  => 'admin/distributor',
             'icon' => 'truck',
         ],
-        
+
     ],
 
     /*
