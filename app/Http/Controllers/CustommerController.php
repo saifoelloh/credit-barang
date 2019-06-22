@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Custommer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustommerController extends Controller
 {
@@ -16,25 +17,26 @@ class CustommerController extends Controller
             return abort(500, $th);
         }
 
-        return view('custommer.index', [
+        return view('layouts.pelanggan.index', [
             'custommers' => $result
         ]);
     }
 
     public function create()
     {
-        //
+        return view('layouts.pelanggan.tambah');
     }
 
     public function store(Request $request)
     {
-        $findCustommer = Custommer::where('email', $request->email)->get();
+        $user = Auth::user();
+        $findCustommer = Custommer::where('nama', $request->nama)->get();
         if (sizeof($findCustommer)!=0) {
             return abort(400);
         }
 
         try {
-            $result = Custommer::create([
+            $user->custommer()->create([
                 'nama' => $request->nama,
                 'alamat' => $request->alamat,
                 'no_telp' => $request->no_telp,
@@ -58,17 +60,18 @@ class CustommerController extends Controller
             return abort(404);
         }
 
-        return view('custommer.edit', [
+        return view('layouts.pelanggan.edit', [
             'custommer' => $result
         ]);
     }
 
     public function update(Request $request, $id)
     {
-        $findCustommer = Custommer::where('email', $request->email)->get();
-        if (sizeof($findCustommer)!=1) {
+        $findCustommer = Custommer::find($id);
+        if ($findCustommer==null) {
             return abort(400);
         }
+
 
         try {
             $findCustommer->update([
@@ -92,7 +95,7 @@ class CustommerController extends Controller
     public function destroy($id)
     {
         try {
-            Custommer::delete($id);
+            Custommer::destroy($id);
         } catch (\Throwable $th) {
             return abort(500, $th);
         }

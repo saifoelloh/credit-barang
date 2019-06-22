@@ -9,7 +9,7 @@
     </div>
     <div class="col-md-6 text-right">
         <h3>
-            <button type="button" class="btn btn-info" 
+            <button type="button" class="btn btn-info"
                 onclick="window.location.href='/admin/pelanggan/add'">
                 Tambah Pelanggan
             </button>
@@ -26,24 +26,13 @@
                 <table class="data-table table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Nama Pelanggan</th>
-                            <th>Alamat</th>
-                            <th>Nomor Telepon</th>
-                            <th>Pegawai</th>
-                            <th>Tindakan</th>
+                            <th class="text-center">No</th>
+                            <th class="text-center">Nama Pelanggan</th>
+                            <th class="text-center">Alamat</th>
+                            <th class="text-center">Nomor Telepon</th>
+                            <th class="text-center">Tindakan</th>
                         </tr>
                     <thead>
-                    <tbody>
-                        <tr>
-                            <td>Aduhai</td>
-                            <td>Tlogosari Raya</td>
-                            <td>08512349182</td>
-                            <td>Saipul Jamil</td>
-                            <td><button type="button" class="btn btn-primary btn-xs" onclick="window.location.href='/admin/pelanggan/edit'">Edit</button>
-                                <button type="button" class="btn btn-danger btn-xs">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
                 </table>
             </div>
         </div>
@@ -54,7 +43,26 @@
 @section('js')
     <script>
         $(document).ready(function () {
-            $('.data-table').dataTable();
+            $('.data-table').dataTable({
+                data: {!! $custommers !!},
+                autoWidth: true,
+                keys: true,
+                columns: [
+                    { data: 'id' },
+                    { data: 'nama' },
+                    { data: 'alamat' },
+                    { data: 'no_telp' },
+                    {
+                        data: 'id',
+                        render: function(data) {
+                            const link = 'http://localhost:8000/admin/pelanggan/'+data;
+                            const detail = '<a class="btn btn-primary btn-xs" style="margin: 0 3px" href="/admin/pelanggan/'+data+'">edit</a>';
+                            const hapus = '<form role="form" action="'+link+'" style="margin: 0 3px;display: inline" method="POST">@method("DELETE")@csrf<button class="btn btn-danger btn-xs">delete</button></form>';
+                            return '<div class="text-center">'+detail+hapus+'</div>';
+                        }
+                    },
+                ]
+            });
         });
     </script>
 @stop
