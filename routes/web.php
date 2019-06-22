@@ -47,6 +47,12 @@ Route::get('/admin/barang', function () {
 Route::get('/admin/pembelian', function () {
     return view('layouts.pembelian.index');
 });
+Route::get('/admin/pembelian/add', function () {
+    return view('layouts.pembelian.tambah');
+});
+Route::get('/admin/pembelian/edit', function () {
+    return view('layouts.pembelian.edit');
+});
 
 /* Distributor */
 Route::get('/admin/distributor', function () {
