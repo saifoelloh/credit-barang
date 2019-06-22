@@ -14,18 +14,14 @@
 <table class="data-table table table-bordered table-hover">
     <thead>
         <tr>
-            <th>Nama Pegawai</th>
-            <th>Alamat</th>
-            <th>Nomor Telepon</th>
+            <th class="text-center">Id</th>
+            <th class="text-center">Nama Pegawai</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">Alamat</th>
+            <th class="text-center">Nomor Telepon</th>
+            <th class="text-center">Tindakan</th>
         </tr>
     <thead>
-    <tbody>
-        <tr>
-            <td>Saipul Jamil</td>
-            <td>Tlogosari Permai</td>
-            <td>087888772973</td>
-        </tr>
-    </tbody>
 </table>
 </div>
 </div>
@@ -36,7 +32,25 @@
 @section('js')
     <script>
         $(document).ready(function () {
-            $('.data-table').dataTable();
+            $('.data-table').dataTable({
+                data: {!! $users !!},
+                columns: [
+                    {data: 'id'},
+                    {data: 'name'},
+                    {data: 'email'},
+                    {data: 'alamat'},
+                    {data: 'no_telp'},
+                    {
+                        data: 'id',
+                        render: function(data) {
+                            const link = 'http://localhost:8000/admin/pegawai/'+data;
+                            const detail = '<a class="btn btn-primary btn-xs" style="margin: 0 3px" href="/admin/pelanggan/'+data+'">edit</a>';
+                            const hapus = '<form role="form" action="'+link+'" style="margin: 0 3px;display: inline" method="POST">@method("DELETE")@csrf<button class="btn btn-danger btn-xs">delete</button></form>';
+                            return '<div class="text-center">'+detail+hapus+'</div>';
+                        }
+                    },
+                ]
+            });
         });
     </script>
 @stop
