@@ -9,7 +9,7 @@
     </div>
     <div class="col-md-6 text-right">
         <h3>
-            <button type="button" class="btn btn-info" 
+            <button type="button" class="btn btn-primary" 
                 onclick="window.location.href='/admin/pelanggan/'">
                 Kembali
             </button>
@@ -19,7 +19,7 @@
 @stop
 
 @section('content')
-    <div class="box box-info">
+    <div class="box box-primary">
         <form role="form">
             <div class="box-body">
             <div class="form-group">
@@ -36,7 +36,7 @@
             </div>
             </div>
             <div class="box-footer">
-            <button type="submit" class="btn btn-info">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>
     </div>

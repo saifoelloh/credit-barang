@@ -9,7 +9,7 @@
     </div>
     <div class="col-md-6 text-right">
         <h3>
-            <button type="button" class="btn btn-primary" 
+            <button type="button" class="btn btn-info" 
                 onclick="window.location.href='/admin/pelanggan/add'">
                 Tambah Pelanggan
             </button>
@@ -39,7 +39,7 @@
                             <td>Tlogosari Raya</td>
                             <td>08512349182</td>
                             <td>Saipul Jamil</td>
-                            <td><button type="button" class="btn btn-info btn-xs" onclick="window.location.href='/admin/pelanggan/edit'">Edit</button>
+                            <td><button type="button" class="btn btn-primary btn-xs" onclick="window.location.href='/admin/pelanggan/edit'">Edit</button>
                                 <button type="button" class="btn btn-danger btn-xs">Delete</button>
                             </td>
                         </tr>
