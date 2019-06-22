@@ -14,24 +14,36 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+/* Pelanggan */
 Route::get('/admin/pelanggan', function () {
     return view('layouts.pelanggan.index');
 });
+Route::get('/admin/pelanggan/add', function () {
+    return view('layouts.pelanggan.tambah');
+});
+Route::get('/admin/pelanggan/edit', function () {
+    return view('layouts.pelanggan.edit');
+});
+
+/* Pegawai */
 Route::get('/admin/pegawai', function () {
     return view('layouts.pegawai.index');
 });
+
+/* Barang */
 Route::get('/admin/barang', function () {
     return view('layouts.barang.index');
 });
+
+/* Pembelian */
 Route::get('/admin/pembelian', function () {
     return view('layouts.pembelian.index');
 });
+
+/* Distributor */
 Route::get('/admin/distributor', function () {
     return view('layouts.distributor.index');
-});
-
-Route::get('/pelanggan', function () {
-    return view('pelanggan.index');
 });
 
 Auth::routes();
