@@ -20,21 +20,24 @@
 
 @section('content')
     <div class="box box-info">
-        <form role="form">
+        <form action="/customer" method="POST" role="form">
+        {!! csrf_field() !!}
+
             <div class="box-body">
             <div class="form-group">
                 <label for="nameCust">Nama Pelanggan</label>
-                <input type="text" class="form-control" id="nameCust" placeholder="Nama Terang Pelanggan">
+                <input type="text" class="form-control" id="nameCust" name="nama" placeholder="Nama Terang Pelanggan">
             </div>
             <div class="form-group">
                 <label for="addrCust">Alamat</label>
-                <input type="text" class="form-control" id="addrCust" placeholder="Alamat Pelanggan Saat Ini">
+                <input type="text" class="form-control" id="addrCust" name="alamat" placeholder="Alamat Pelanggan Saat Ini">
             </div>
             <div class="form-group">
                 <label for="phoneCust">Nomor Telp</label>
-                <input type="text" class="form-control" id="phoneCust" placeholder="Nomor Telepon Yang Dapat Dihubungi">
+                <input type="text" class="form-control" id="phoneCust" name="no_telp" placeholder="Nomor Telepon Yang Dapat Dihubungi">
             </div>
             </div>
+
             <div class="box-footer">
             <button type="submit" class="btn btn-info">Submit</button>
             </div>
