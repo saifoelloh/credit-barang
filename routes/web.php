@@ -31,11 +31,18 @@ Route::group([
         Route::put('/{id}', 'CustommerController@update')->name('.update');
         Route::delete('/{id}', 'CustommerController@destroy')->name('.destroy');
     });
-});
-
-/* Pegawai */
-Route::get('/admin/pegawai', function () {
-    return view('layouts.pegawai.index');
+    /* Pegawai */
+    Route::group([
+        'prefix' => 'pegawai',
+        'as' => 'pegawai'
+    ], function(){
+        Route::get('/', 'UserController@index');
+        Route::post('/', 'UserController@store')->name('.store');
+        Route::get('/add', 'UserController@create')->name('.create');
+        Route::get('/{id}', 'UserController@edit')->name('.edit');
+        Route::put('/{id}', 'UserController@update')->name('.update');
+        Route::delete('/{id}', 'UserController@destroy')->name('.destroy');
+    });
 });
 
 /* Barang */
