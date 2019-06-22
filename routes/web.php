@@ -15,16 +15,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/* Pelanggan */
-Route::get('/admin/pelanggan', function () {
-    return view('layouts.pelanggan.index');
+Route::group([
+    'prefix' => 'admin',
+    'middleware' => 'auth'
+], function() {
+    /* Pelanggan */
+    Route::group([
+        'prefix' => 'pelanggan',
+        'as' => 'custommer'
+    ], function(){
+        Route::get('/', 'CustommerController@index');
+        Route::post('/', 'CustommerController@store')->name('.store');
+        Route::get('/add', 'CustommerController@create')->name('.create');
+        Route::get('/{id}', 'CustommerController@edit')->name('.edit');
+        Route::put('/{id}', 'CustommerController@update')->name('.update');
+        Route::delete('/{id}', 'CustommerController@destroy')->name('.destroy');
+    });
 });
-Route::get('/admin/pelanggan/add', function () {
-    return view('layouts.pelanggan.tambah');
-});
-Route::get('/admin/pelanggan/edit', function () {
-    return view('layouts.pelanggan.edit');
-});
+// Route::get('/admin/pelanggan', function () {
+//     return view('layouts.pelanggan.index');
+// });
+// Route::get('/admin/pelanggan/add', function () {
+//     return view('layouts.pelanggan.tambah');
+// });
+// Route::get('/admin/pelanggan/edit', function () {
+//     return view('layouts.pelanggan.edit');
+// });
 
 /* Pegawai */
 Route::get('/admin/pegawai', function () {
