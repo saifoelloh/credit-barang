@@ -30,7 +30,7 @@
             <div class="form-group">
                 <label for="nameBury">Nama</label>
                 <select class="form-control select2" id="nameBury" style="width: 100%;">
-                  <option selected="selected">Nama Terang Pembeli</option>
+                  <option selected="selected" disabled="disabled">Nama Terang Pembeli</option>
                   <option>Amrin</option>
                   <option>Ipul</option>
                   <option>Udin</option>
@@ -42,7 +42,7 @@
             <div class="form-group">
                 <label for="thingsBuyr">Barang</label>
                 <select class="form-control select2" id="thingsBuyr" style="width: 100%;">
-                  <option selected="selected">Nama Barang yang Dibeli</option>
+                  <option selected="selected" disabled="disabled">Nama Barang yang Dibeli</option>
                   <option>Ticket GFriend</option>
                   <option>Steam Wallet 200k</option>
                   <option>Arcana Phantom Assasin</option>
