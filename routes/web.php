@@ -49,6 +49,12 @@ Route::group([
 Route::get('/admin/barang', function () {
     return view('layouts.barang.index');
 });
+Route::get('/admin/barang/add', function () {
+    return view('layouts.barang.tambah');
+});
+Route::get('/admin/barang/edit', function () {
+    return view('layouts.barang.edit');
+});
 
 /* Pembelian */
 Route::get('/admin/pembelian', function () {
