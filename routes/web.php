@@ -45,6 +45,15 @@ Route::group([
     });
 });
 
+
+/* PEGAWAI */
+Route::get('/admin/pegawai/add', function () {
+    return view('layouts.pegawai.tambah');
+});
+Route::get('/admin/pegawai/edit', function () {
+    return view('layouts.pegawai.edit');
+});
+
 /* Barang */
 Route::get('/admin/barang', function () {
     return view('layouts.barang.index');
@@ -70,6 +79,12 @@ Route::get('/admin/pembelian/edit', function () {
 /* Distributor */
 Route::get('/admin/distributor', function () {
     return view('layouts.distributor.index');
+});
+Route::get('/admin/distributor/add', function () {
+    return view('layouts.distributor.tambah');
+});
+Route::get('/admin/distributor/edit', function () {
+    return view('layouts.distributor.edit');
 });
 
 Auth::routes();
