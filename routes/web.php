@@ -43,18 +43,34 @@ Route::group([
         Route::put('/{id}', 'UserController@update')->name('.update');
         Route::delete('/{id}', 'UserController@destroy')->name('.destroy');
     });
-});
-
-
-/* PEGAWAI */
-Route::get('/admin/pegawai/add', function () {
-    return view('layouts.pegawai.tambah');
-});
-Route::get('/admin/pegawai/edit', function () {
-    return view('layouts.pegawai.edit');
+    /* Distributor */
+    Route::group([
+      'as' => 'distributor',
+      'prefix' => 'distributor',
+    ], function () {
+      Route::get('/', 'DistributorController@index');
+      Route::post('/', 'DistributorController@store')->name('.store');
+      Route::get('/add', 'DistributorController@create')->name('.create');
+      Route::get('/{id}', 'DistributorController@edit')->name('.edit');
+      Route::put('/{id}', 'DistributorController@update')->name('.update');
+      Route::delete('/{id}', 'DistributorController@destroy')->name('.destroy');
+    });
+    /* Barang */
+    Route::group([
+      'as' => 'barang',
+      'prefix' => 'barang',
+    ], function () {
+      Route::get('/', 'BarangController@index');
+      Route::post('/', 'BarangController@store')->name('.store');
+      Route::get('/add', 'BarangController@create')->name('.create');
+      Route::get('/{id}', 'BarangController@edit')->name('.edit');
+      Route::put('/{id}', 'BarangController@update')->name('.update');
+      Route::delete('/{id}', 'BarangController@destroy')->name('.destroy');
+    });
 });
 
 /* Barang */
+/*
 Route::get('/admin/barang', function () {
     return view('layouts.barang.index');
 });
@@ -64,6 +80,7 @@ Route::get('/admin/barang/add', function () {
 Route::get('/admin/barang/edit', function () {
     return view('layouts.barang.edit');
 });
+ */
 
 /* Pembelian */
 Route::get('/admin/pembelian', function () {
@@ -76,16 +93,6 @@ Route::get('/admin/pembelian/edit', function () {
     return view('layouts.pembelian.edit');
 });
 
-/* Distributor */
-Route::get('/admin/distributor', function () {
-    return view('layouts.distributor.index');
-});
-Route::get('/admin/distributor/add', function () {
-    return view('layouts.distributor.tambah');
-});
-Route::get('/admin/distributor/edit', function () {
-    return view('layouts.distributor.edit');
-});
 
 Auth::routes();
 
