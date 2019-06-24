@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -18,7 +19,7 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('welcome');
+        return view('layouts.pegawai.tambah');
     }
 
     public function store(Request $request)
@@ -34,6 +35,7 @@ class UserController extends Controller
                 'email' => $request->email,
                 'alamat' => $request->alamat,
                 'no_telp' => $request->no_telp,
+                'password' => Hash::make($request->password),
             ]);
         } catch (\Throwable $th) {
             return abort(500, $th);
@@ -51,7 +53,7 @@ class UserController extends Controller
             return abort(500, $th);
         }
 
-        return view('welcome', [
+        return view('layouts.pegawai.edit', [
             'user' => $user,
         ]);
     }

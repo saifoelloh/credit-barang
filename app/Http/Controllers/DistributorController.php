@@ -16,14 +16,14 @@ class DistributorController extends Controller
             return abort(500, $th);
         }
 
-        return view('distributor', [
-            'distributor' => $result
+        return view('layouts.distributor.index', [
+            'distributors' => $result
         ]);
     }
 
     public function create()
     {
-        return view('distributor.create');
+        return view('layouts.distributor.tambah');
     }
 
     public function store(Request $request)
@@ -57,16 +57,16 @@ class DistributorController extends Controller
             return abort(404);
         }
 
-        return view('distributor.edit', [
+        return view('layouts.distributor.edit', [
             'distributor' => $result
         ]);
     }
 
     public function update(Request $request, $id)
     {
-        $findDistributor = Distributor::where('nama', $request->nama)->get();
-        if (sizeof($findDistributor)!=1) {
-            return abort(400);
+        $findDistributor = Distributor::find($id);
+        if ($findDistributor==null) {
+            return abort(404);
         }
 
         try {

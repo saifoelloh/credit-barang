@@ -11,33 +11,38 @@ class BarangController extends Controller
 
     public function index()
     {
-        $barangs = Barang::All();
+        $barangs = Barang::with('distributor')->get();
 
-        return view('welcome', [
+        return view('layouts.barang.index', [
             'barangs' => $barangs
         ]);
     }
 
     public function create()
     {
-        //
+        $distributors = Distributor::All();
+
+        return view('layouts.barang.tambah', [
+          'distributors' => $distributors,
+        ]);
     }
 
     public function store(Request $request)
     {
-        $findItem = Barang::where('kode', $request->kode)-get();
+        $findItem = Barang::where('kode', $request->kode)->get();
         if (sizeof($findItem)) {
-            return abort(400);
+            return abort(404);
         }
 
+        dd($request->distributorId);
         $findDistributor = Distributor::find($request->distributorId);
 
         try {
-            $findDistributor->barang()->create([
+            $findDistributor->barangs()->create([
                 'kode' => $request->kode,
                 'nama' => $request->nama,
                 'harga' => $request->harga,
-                'jumlah' => $request->kode,
+                'jumlah' => $request->jumlah,
             ]);
         } catch (\Throwable $th) {
             return abort(500, $th);
