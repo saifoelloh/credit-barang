@@ -11,7 +11,7 @@ class Distributor extends Model
         'alamat'
     ];
 
-    public function barang()
+    public function barangs()
     {
         return $this->hasMany('App\Barang');
     }
