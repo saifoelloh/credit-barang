@@ -9,10 +9,9 @@
     </div>
     <div class="col-md-6 text-right">
         <h3>
-            <button type="button" class="btn btn-info" 
-                onclick="window.location.href='/admin/pegawai/'">
+            <a class="btn btn-info" href={{route('pegawai')}}>
                 Kembali
-            </button>
+            </a>
         </h3>
     </div>
 </div>
@@ -20,21 +19,24 @@
 
 @section('content')
 <div class="box box-info">
-    <form role="form">
+    <form role="form" action={{route('pegawai.store')}} method="post">
+        @csrf
         <div class="box-body">
             <div class="form-group">
                 <label for="pegName">Nama Pegawai</label>
-                <input type="text" class="form-control" id="pegName" placeholder="Nama Terang Pegawai">
+                <input type="text" name="name" class="form-control" id="pegName" required placeholder="Nama Terang Pegawai">
                 <label for="pegEmail">Email</label>
-                <input type="text" class="form-control" id="pegEmail" placeholder="Email Aktif Pegawai">
+                <input type="email" name="email" class="form-control" id="pegEmail" required placeholder="Email Aktif Pegawai">
                 <label for="pegAlmt">Alamat</label>
-                <input type="text" class="form-control" id="pegAlmt" placeholder="Alamat Jelas Pegawai">
+                <input type="text" name="alamat" class="form-control" id="pegAlmt" required placeholder="Alamat Jelas Pegawai">
                 <label for="pegTelp">Nomor Telepon</label>
-                <input type="text" class="form-control" id="pegTelp" placeholder="Nomor Telepon Aktif">
+                <input type="text" name="no_telp" class="form-control" id="pegTelp" required placeholder="Nomor Telepon Aktif">
+                <label for="pegTelp">Password</label>
+                <input type="password" name="password" class="form-control" id="pegTelp" required placeholder="xxxxxx">
             </div>
         </div>
         <div class="box-footer">
-        <button type="submit" class="btn btn-info">Submit</button>
+          <button type="submit" class="btn btn-info">Submit</button>
         </div>
     </form>
 </div>

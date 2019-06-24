@@ -9,10 +9,9 @@
     </div>
     <div class="col-md-6 text-right">
         <h3>
-            <button type="button" class="btn btn-primary" 
-                onclick="window.location.href='/admin/pegawai/'">
+            <a class="btn btn-primary" href={{route('pegawai')}}>
                 Kembali
-            </button>
+            </a>
         </h3>
     </div>
 </div>
@@ -24,13 +23,15 @@
         <div class="box-body">
             <div class="form-group">
                 <label for="pegName">Nama Pegawai</label>
-                <input type="text" class="form-control" id="pegName" placeholder="Nama Terang Pegawai">
+                <input type="text" value={{$user->name}} name="name" class="form-control" id="pegName" required placeholder="Nama Terang Pegawai">
                 <label for="pegEmail">Email</label>
-                <input type="text" class="form-control" id="pegEmail" placeholder="Email Aktif Pegawai">
+                <input type="email" value={{$user->email}} name="email" class="form-control" id="pegEmail" required placeholder="Email Aktif Pegawai">
                 <label for="pegAlmt">Alamat</label>
-                <input type="text" class="form-control" id="pegAlmt" placeholder="Alamat Jelas Pegawai">
+                <input type="text" value={{$user->alamat}} name="alamat" class="form-control" id="pegAlmt" required placeholder="Alamat Jelas Pegawai">
                 <label for="pegTelp">Nomor Telepon</label>
-                <input type="text" class="form-control" id="pegTelp" placeholder="Nomor Telepon Aktif">
+                <input type="text" value={{$user->no_telp}} name="no_telp" class="form-control" id="pegTelp" required placeholder="Nomor Telepon Aktif">
+                <label for="pegTelp">Password</label>
+                <input type="password" name="password" class="form-control" id="pegTelp" required placeholder="xxxxxx">
             </div>
         </div>
         <div class="box-footer">

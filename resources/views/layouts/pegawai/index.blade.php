@@ -9,10 +9,9 @@
     </div>
     <div class="col-md-6 text-right">
         <h3>
-            <button type="button" class="btn btn-info" 
-                onclick="window.location.href='/admin/pegawai/add'">
+            <a class="btn btn-info" href={{route('pegawai.create')}}>
                 Tambah Pegawai
-            </button>
+            </a>
         </h3>
     </div>
 </div>
