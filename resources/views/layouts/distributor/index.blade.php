@@ -9,10 +9,9 @@
     </div>
     <div class="col-md-6 text-right">
         <h3>
-            <button type="button" class="btn btn-info"
-                onclick="window.location.href='/admin/distributor/add'">
+            <a class="btn btn-info" href={{route('distributor.create')}}>
                 Tambah Distributor
-            </button>
+            </a>
         </h3>
     </div>
 </div>
@@ -52,7 +51,23 @@
 @section('js')
     <script>
         $(document).ready(function () {
-            $('.data-table').dataTable();
+          $('.data-table').dataTable({
+            data: {!! $distributors !!},
+            columns: [
+              { data : 'id' },
+              { data : 'nama' },
+              { data : 'alamat' },
+              {
+                data : 'id',
+                render: function(data) {
+                    const link = 'http://localhost:8000/admin/distributor/'+data;
+                    const detail = '<a class="btn btn-primary btn-xs" style="margin: 0 3px" href="'+link+'">edit</a>';
+                    const hapus = '<form role="form" action="'+link+'" style="margin: 0 3px;display: inline" method="POST">@method("DELETE")@csrf<button class="btn btn-danger btn-xs">delete</button></form>';
+                    return '<div class="text-center">'+detail+hapus+'</div>';
+                }
+              },
+            ]
+          });
         });
     </script>
 @stop
