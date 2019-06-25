@@ -51,6 +51,9 @@ Route::group([
       Route::get('/', 'DistributorController@index');
       Route::post('/', 'DistributorController@store')->name('.store');
       Route::get('/add', 'DistributorController@create')->name('.create');
+      Route::get('/detail', function () {
+          return view('layouts.distributor.detail');
+        });
       Route::get('/{id}', 'DistributorController@edit')->name('.edit');
       Route::put('/{id}', 'DistributorController@update')->name('.update');
       Route::delete('/{id}', 'DistributorController@destroy')->name('.destroy');
@@ -82,6 +85,7 @@ Route::get('/admin/barang/edit', function () {
 });
  */
 
+
 /* Pembelian */
 Route::get('/admin/pembelian', function () {
     return view('layouts.pembelian.index');
@@ -92,6 +96,7 @@ Route::get('/admin/pembelian/add', function () {
 Route::get('/admin/pembelian/edit', function () {
     return view('layouts.pembelian.edit');
 });
+
 
 
 Auth::routes();
