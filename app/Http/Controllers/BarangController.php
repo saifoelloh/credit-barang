@@ -11,7 +11,10 @@ class BarangController extends Controller
 
     public function index()
     {
-        $barangs = Barang::with('distributor')->get();
+        $barangs = Barang::All();
+        $barangs->each(function($item, $key) {
+            return $item->distributor;
+        });
 
         return view('layouts.barang.index', [
             'barangs' => $barangs
@@ -24,18 +27,12 @@ class BarangController extends Controller
 
         return view('layouts.barang.tambah', [
           'distributors' => $distributors,
-        ]);
-    }
+          ]);
+        }
 
     public function store(Request $request)
     {
-        $findItem = Barang::where('kode', $request->kode)->get();
-        if (sizeof($findItem)) {
-            return abort(404);
-        }
-
-        dd($request->distributorId);
-        $findDistributor = Distributor::find($request->distributorId);
+        $findDistributor = Distributor::find($request->distrib);
 
         try {
             $findDistributor->barangs()->create([
@@ -45,6 +42,7 @@ class BarangController extends Controller
                 'jumlah' => $request->jumlah,
             ]);
         } catch (\Throwable $th) {
+            dd($th);
             return abort(500, $th);
         }
 
@@ -53,35 +51,32 @@ class BarangController extends Controller
 
     public function edit($id)
     {
+        $distributors = Distributor::All();
         try {
             $result = Barang::find($id);
         } catch (\Throwable $th) {
             return abort(500, $th);
         }
 
-        return view('barang.edit', [
-            'barang' => $result
+        return view('layouts.barang.edit', [
+            'barang' => $result,
+            'distributors' => $distributors,
         ]);
     }
 
     public function update(Request $request, $id)
     {
-        $findItem = Barang::where('kode', $id)-get();
-        if (sizeof($findItem)) {
+        $findItem = Barang::find($id);
+        if ($findItem==null) {
             return abort(404);
         }
 
-        $findDistributor = Distributor::find($request->distributorId);
-        if ($findItem[0]->id!=$findDistributor->id) {
-            return abort(403);
-        }
-
         try {
-            $findDistributor->barang()->update([
+            $findItem->update([
                 'kode' => $request->kode,
                 'nama' => $request->nama,
                 'harga' => $request->harga,
-                'jumlah' => $request->kode,
+                'jumlah' => $request->jumlah,
             ]);
         } catch (\Throwable $th) {
             return abort(500, $th);
