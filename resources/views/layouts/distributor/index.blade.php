@@ -31,18 +31,6 @@
                             <th>Tindakan</th>
                         </tr>
                     <thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>PT Astrindo</td>
-                            <td>Jakarta Utara</td>
-                            <td>
-                                <button type="button" class="btn btn-success btn-xs">Detail</button>
-                                <button type="button" class="btn btn-primary btn-xs" onclick="window.location.href='/admin/distributor/edit'">Edit</button>
-                                <button type="button" class="btn btn-danger btn-xs">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
                 </table>
             </div>
         </div>
