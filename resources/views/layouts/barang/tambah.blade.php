@@ -9,7 +9,7 @@
     </div>
     <div class="col-md-6 text-right">
         <h3>
-            <button type="button" class="btn btn-info" 
+            <button type="button" class="btn btn-info"
                 onclick="window.location.href='/admin/barang/'">
                 Kembali
             </button>
@@ -32,12 +32,12 @@
                 <input name="harga" type="number" min="0.01" step="0.01" class="form-control" id="priceBrg" placeholder="Harga Barang" required>
                 <label for="ammtBrg">Jumlah</label>
                 <input name="jumlah" type="number" class="form-control" id="ammtBrg" placeholder="Jumlah Barang" required>
-                <label for="pgwiBrg">Distributor</label>
-                <select name="distributorId" class="form-control select2" id="pgwiBrg" style="width: 100%;">
-                  @foreach($distributors as $key => $distrib)
-                  <option value={{$distrib->id}} >
-                    {{$distrib->nama}}
-                  </option>
+                <label for="distrib">Distributor</label>
+                <select name="distrib" class="form-control" id="distrib" style="width: 100%;">
+                  @foreach($distributors as $distrib)
+                    <option value="{{$distrib->id}}" >
+                        {{$distrib->nama}}
+                    </option>
                   @endforeach
                 </select>
             </div>
