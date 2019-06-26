@@ -18,7 +18,6 @@ class CreateBarangsTable extends Migration
             $table->string('nama');
             $table->integer('harga');
             $table->integer('jumlah');
-            $table->integer('user_id');
             $table->integer('distributor_id');
             $table->timestamps();
         });
