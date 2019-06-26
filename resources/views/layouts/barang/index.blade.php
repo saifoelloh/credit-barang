@@ -25,26 +25,14 @@
                 <table class="data-table table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th class="text-center">No</th>
+                            <th class="text-center">Kode</th>
                             <th class="text-center">Nama Barang</th>
+                            <th class="text-center">Distributor</th>
                             <th class="text-center">Harga</th>
                             <th class="text-center">Jumlah</th>
-                            <th class="text-center">Distributor</th>
                             <th class="text-center">Tindakan</th>
                         </tr>
                     <thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Ticket VIP Gfriend</td>
-                            <td>1.500.000</td>
-                            <td>5</td>
-                            <td>PT Astrindo</td>
-                            <td><button type="button" class="btn btn-primary btn-xs" onclick="window.location.href='/admin/barang/edit'">Edit</button>
-                                <button type="button" class="btn btn-danger btn-xs">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
                 </table>
             </div>
         </div>
@@ -58,12 +46,19 @@
           $('.data-table').dataTable({
             data: {!! $barangs !!},
             columns: [
-              {data: 'id'},
+              {data: 'kode'},
               {data: 'nama'},
+              {
+                  data: 'distributor',
+                  render: function(data) {
+                      const link = 'http://localhost:8000/admin/distributor/'+data.id;
+                      return '<a href="'+link+'">'+data.nama+'</a>';
+                  }
+              },
               {data: 'harga'},
               {data: 'jumlah'},
               {
-                data: 'id',
+                data: 'kode',
                 render: function(data) {
                   const link = 'http://localhost:8000/admin/barang/'+data;
                   const detail = '<a class="btn btn-primary btn-xs" style="margin: 0 3px" href="'+link+'">edit</a>';
